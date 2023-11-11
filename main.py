@@ -32,6 +32,13 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.operator("object.crowdpes6", text = "Crowd PES6")
         # Create simple row
         row = layout.row()
+        row.label(text = "PES 2020")
+        row = layout.row()
+        row.operator("object.pes2020matremove", text = "Remove unnecessary materials")
+        row = layout.row()
+        row.operator("object.alphatoopaque", text = "Alpha to opaque")
+        # Create simple row
+        row = layout.row()
         row.label(text = "Others")
         row = layout.row()
         row.operator("object.adbbattach", text = "adbb Attach")

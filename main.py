@@ -14,7 +14,7 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         # Create simple rows
         # Create simple row
         row = layout.row()
-        row.label(text = "Import GLTF and scale")
+        row.label(text = "Import GLTF and Scale")
         row = layout.row()
         row.operator("object.initialimport0", text = "Import stad_0")
         row = layout.row()
@@ -23,13 +23,15 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.operator("object.initialimport3", text = "Import stad_3")
         # Create simple row
         row = layout.row()
-        row.label(text = "Crowd modification")
-        row = layout.row()
-        row.operator("object.crowdsplit", text = "Crowd Split")
+        row.label(text = "Crowd separation")
         row = layout.row()
         row.operator("object.crowdfifa16", text = "Crowd FIFA16")
         row = layout.row()
         row.operator("object.crowdpes6", text = "Crowd PES6")
+        row = layout.row()
+        row.label(text = "Crowd distribution")
+        row = layout.row()
+        row.operator("object.crowdsplit", text = "Crowd Split")
         # Create simple row
         row = layout.row()
         row.label(text = "PES 2020")

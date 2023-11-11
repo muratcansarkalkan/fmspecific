@@ -97,26 +97,26 @@ After installing the FIFA Stadium Conversion Scripts add-on, you can access it w
       - Import stad_0: Imports `stadium_0.gltf`
       - Import stad_1: Imports `stadium_1.gltf`
       - Import stad_3: Imports `stadium_3.gltf`
+      - Scale Empties: Scales empties to a plausible size as sometimes the lines of empties can be too long.
 
    - **Crowd Separation**
       - Crowd FIFA16: Separates crowds based on their texture for FIFA16 stadia.
       - Crowd PES6: Separates crowds based on their texture for PES6 stadia.
 
    - **Crowd Distribution**
-      - Crowd Split: Equally and randomly distributes crowds for both away and home to 4 different materials (0,1,2,3)
+      - Crowd Split: Equally and randomly distributes crowds for both away and home to 4 different materials (0,1,2,3). Before using this feature, view the instructions by hovering over the button.
       
    - **PES 2020**
       - Remove Unnecessary Materials: Removes every other material from the blend file unless the texture is a diffuse texture.
       - Alpha to Opaque: Switches blending type of Selected objects from alpha blend, to opaque.
 
-   - **Others**
-      - adbb Attach: Uses adbb
-      - Add Generic Grass: `object.genericgrass`
-      - Bake Transparent Objects: `object.baketrans`
-      - Convert Vertex to Empties (Lights.001): `object.vertextolightglow`
-      - Split Stadium by Textures (PES6): `object.texturesplit`
-      - Clear Vertex Groups: `object.removevg`
-      - Scale Empties: `object.scaleempties`
+   - **Optional and Advanced Features**
+      - adbb Attach: Creates a mesh for adbb texture in the middle of adboards.
+      - Add Generic Grass: Adds grass for stadiums which don't have a field object to avoid black areas in 3D match.
+      - Bake Transparent Objects: Bakes objects that has transparent textures without texture.
+      - Convert Vertex to Empties (Lights.001): Creates empties from independent vertices.
+      - Split Stadium by Textures (PES6): Splits objects by texture rather than material. You need to merge everything into one object before using this method.
+      - Clear Vertex Groups: Clears vertex groups that are created after the previous method.
 
 This tab provides easy access to the various functionalities offered by the FIFA Stadium Conversion Scripts.
 

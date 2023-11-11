@@ -21,6 +21,8 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.operator("object.initialimport1", text = "Import stad_1")
         row = layout.row()
         row.operator("object.initialimport3", text = "Import stad_3")
+        row = layout.row()
+        row.operator("object.scaleempties", text = "Scale empties")
         # Create simple row
         row = layout.row()
         row.label(text = "Crowd separation")
@@ -54,5 +56,3 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.operator("object.texturesplit", text = "Split stadium by textures (PES6)")
         row = layout.row()
         row.operator("object.removevg", text = "Clear vertex groups")
-        row = layout.row()
-        row.operator("object.scaleempties", text = "Scale empties")

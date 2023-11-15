@@ -6,6 +6,10 @@ A collection of scripts for converting stadiums from FIFA16, PES6, and PES2020 t
 
 These scripts are compatible with Blender 3.1.
 
+## Changelog
+
+11/15/2023 - Added Photoshop script for creating shadow images inside `photoshop_scripts` directory.
+
 ## Installation
 
 1. Download the repository as a ZIP file by clicking the "Code" button and selecting "Download ZIP."

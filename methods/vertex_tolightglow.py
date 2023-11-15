@@ -8,7 +8,7 @@ class VERTEX_TOLIGHTGLOW(bpy.types.Operator):
     def execute(self, context):
         # Set the name of the object you want to work with
         object_name = "Lights.001"
-
+        suffix = " [dir]"
         # Get the object by name
         obj = bpy.data.objects.get(object_name)
 
@@ -35,5 +35,10 @@ class VERTEX_TOLIGHTGLOW(bpy.types.Operator):
             bpy.ops.object.delete()
         else:
             print("Object not found.")
+
+        for obj in bpy.context.collection.objects:
+            if obj.name.startswith("LightGlowA"):
+                # Check if the object's name starts with "LightGlowA"
+                obj.name += suffix
                 
         return{"FINISHED"}

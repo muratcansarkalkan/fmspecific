@@ -56,3 +56,5 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.operator("object.texturesplit", text = "Split stadium by textures (PES6)")
         row = layout.row()
         row.operator("object.removevg", text = "Clear vertex groups")
+        row = layout.row()
+        row.operator("object.removevcols", text = "Remove vertex colors (FIFA16)")

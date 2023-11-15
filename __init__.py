@@ -20,12 +20,10 @@ from fmspecific.methods.adbb_attach import ADBB_ATTACH
 from fmspecific.methods.crowd_fifa16 import CROWD_FIFA16
 from fmspecific.methods.crowd_pes6 import CROWD_PES6
 from fmspecific.methods.crowd_split import CROWD_SPLIT
-from fmspecific.methods.remove_vg import REMOVE_VG
-from fmspecific.methods.scale_empties import SCALE_EMPTIES
-from fmspecific.methods.adbb_attach import ADBB_ATTACH
 from fmspecific.methods.generic_grass import GENERIC_GRASS
 from fmspecific.methods.alpha_to_opaque import ALPHA_TO_OPAQUE
 from fmspecific.methods.pes2020_matremove import PES2020_MATREMOVE
+from fmspecific.methods.remove_vcols import REMOVE_VCOLS
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -44,6 +42,7 @@ def register():
     bpy.utils.register_class(GENERIC_GRASS)
     bpy.utils.register_class(PES2020_MATREMOVE)
     bpy.utils.register_class(ALPHA_TO_OPAQUE)
+    bpy.utils.register_class(REMOVE_VCOLS)
 
 def unregister():
     bpy.utils.unregister_class(main.PANEL_CUSTOM_UI)
@@ -62,6 +61,7 @@ def unregister():
     bpy.utils.unregister_class(GENERIC_GRASS)
     bpy.utils.unregister_class(PES2020_MATREMOVE)
     bpy.utils.unregister_class(ALPHA_TO_OPAQUE)
+    bpy.utils.unregister_class(REMOVE_VCOLS)
 
 if __name__ == "__main__":
     register()

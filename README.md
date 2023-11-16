@@ -9,6 +9,7 @@ These scripts are compatible with Blender 3.1.
 ## Changelog
 
 11/15/2023 - Added Photoshop script for creating shadow images inside `photoshop_scripts` directory.
+11/15/2023 - Added script for adjusting brightness for all of the objects by %25.
 
 ## Installation
 

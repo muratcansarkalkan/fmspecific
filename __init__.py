@@ -24,6 +24,7 @@ from .methods.generic_grass import GENERIC_GRASS
 from .methods.alpha_to_opaque import ALPHA_TO_OPAQUE
 from .methods.pes2020_matremove import PES2020_MATREMOVE
 from .methods.remove_vcols import REMOVE_VCOLS
+from .methods.vertex_brightness import VERTEX_BRIGHTNESS
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -43,6 +44,7 @@ def register():
     bpy.utils.register_class(PES2020_MATREMOVE)
     bpy.utils.register_class(ALPHA_TO_OPAQUE)
     bpy.utils.register_class(REMOVE_VCOLS)
+    bpy.utils.register_class(VERTEX_BRIGHTNESS)
 
 def unregister():
     bpy.utils.unregister_class(main.PANEL_CUSTOM_UI)
@@ -62,6 +64,7 @@ def unregister():
     bpy.utils.unregister_class(PES2020_MATREMOVE)
     bpy.utils.unregister_class(ALPHA_TO_OPAQUE)
     bpy.utils.unregister_class(REMOVE_VCOLS)
+    bpy.utils.unregister_class(VERTEX_BRIGHTNESS)
 
 if __name__ == "__main__":
     register()

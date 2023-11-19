@@ -107,9 +107,10 @@ After installing the FIFA Stadium Conversion Scripts add-on, you can access it w
    - **Crowd Separation**
       - Crowd FIFA16: Separates crowds based on their texture for FIFA16 stadia.
       - Crowd PES6: Separates crowds based on their texture for PES6 stadia.
+      For now use only Crowd PES6 option. Before execution, make sure no object is selected at 3D Viewport. Press <kbd>Alt</kbd> + <kbd>A</kbd> to deselect everything at Object mode.
 
    - **Crowd Distribution**
-      - Crowd Split: Equally and randomly distributes crowds for both away and home to 4 different materials (0,1,2,3). Before using this feature, view the instructions by hovering over the button.
+      - Crowd Split: Equally and randomly distributes crowds for both away and home to 4 different materials (0,1,2,3). Before using this feature, view the instructions by hovering over the button. Make sure no object is selected at 3D Viewport and no mesh is selected at enable_crowd object. Press <kbd>Alt</kbd> + <kbd>A</kbd> to deselect everything at Object mode or Edit mode.
       
    - **PES 2020**
       - Remove Unnecessary Materials: Removes every other material from the blend file unless the texture is a diffuse texture.

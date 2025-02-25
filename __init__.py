@@ -25,6 +25,9 @@ from .methods.alpha_to_opaque import ALPHA_TO_OPAQUE
 from .methods.pes2020_matremove import PES2020_MATREMOVE
 from .methods.remove_vcols import REMOVE_VCOLS
 from .methods.vertex_brightness import VERTEX_BRIGHTNESS
+from .methods.vertex_brightnight import VERTEX_BRIGHTNIGHT
+from .methods.create_bakeimage import CREATE_BAKEIMAGE
+from .methods.get_shadow import GET_SHADOW
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -45,6 +48,9 @@ def register():
     bpy.utils.register_class(ALPHA_TO_OPAQUE)
     bpy.utils.register_class(REMOVE_VCOLS)
     bpy.utils.register_class(VERTEX_BRIGHTNESS)
+    bpy.utils.register_class(VERTEX_BRIGHTNIGHT)
+    bpy.utils.register_class(CREATE_BAKEIMAGE)
+    bpy.utils.register_class(GET_SHADOW)
 
 def unregister():
     bpy.utils.unregister_class(main.PANEL_CUSTOM_UI)
@@ -65,6 +71,9 @@ def unregister():
     bpy.utils.unregister_class(ALPHA_TO_OPAQUE)
     bpy.utils.unregister_class(REMOVE_VCOLS)
     bpy.utils.unregister_class(VERTEX_BRIGHTNESS)
+    bpy.utils.unregister_class(VERTEX_BRIGHTNIGHT)
+    bpy.utils.unregister_class(CREATE_BAKEIMAGE)
+    bpy.utils.unregister_class(GET_SHADOW)
 
 if __name__ == "__main__":
     register()

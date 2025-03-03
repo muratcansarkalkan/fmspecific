@@ -34,6 +34,8 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row.label(text = "Crowd distribution")
         row = layout.row()
         row.operator("object.crowdsplit", text = "Crowd Split")
+        row = layout.row()
+        row.operator("object.crowdrandomizer", text = "Crowd Randomizer")
         # Create simple row
         row = layout.row()
         row.label(text = "PES 2020")

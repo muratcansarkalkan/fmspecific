@@ -29,6 +29,11 @@ from .methods.vertex_brightnight import VERTEX_BRIGHTNIGHT
 from .methods.create_bakeimage import CREATE_BAKEIMAGE
 from .methods.get_shadow import GET_SHADOW
 from .methods.crowd_randomizer import CROWD_RANDOMIZER
+from .methods.subdivide_evil import SUBDIVIDE_EVIL
+from .methods.export_gltf import QUICK_OT_export_gltf
+from .methods.export_gltf import QUICK_PT_gltf_panel
+from .methods.pes2020_scale import PES2020_SCALE
+from .methods.append_lights import APPEND_LIGHTS
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -53,6 +58,23 @@ def register():
     bpy.utils.register_class(CREATE_BAKEIMAGE)
     bpy.utils.register_class(GET_SHADOW)
     bpy.utils.register_class(CROWD_RANDOMIZER)
+    bpy.utils.register_class(SUBDIVIDE_EVIL)
+    bpy.utils.register_class(QUICK_OT_export_gltf)
+    ## bpy.utils.register_class(QUICK_PT_gltf_panel)
+    bpy.utils.register_class(PES2020_SCALE)
+    bpy.utils.register_class(APPEND_LIGHTS)
+
+    bpy.types.Scene.quick_gltf_export_name = bpy.props.EnumProperty(
+        name="GLTF Name",
+        description="Choose a target export filename",
+        items=[
+            ("shadow_1.gltf", "shadow_1.gltf", ""),
+            ("sky_3.gltf", "sky_3.gltf", ""),
+            ("stadium_1.gltf", "stadium_1.gltf", ""),
+            ("stadium_3.gltf", "stadium_3.gltf", ""),
+        ],
+        default="stadium_3.gltf"
+    )
 
 def unregister():
     bpy.utils.unregister_class(main.PANEL_CUSTOM_UI)
@@ -77,6 +99,12 @@ def unregister():
     bpy.utils.unregister_class(CREATE_BAKEIMAGE)
     bpy.utils.unregister_class(GET_SHADOW)
     bpy.utils.unregister_class(CROWD_RANDOMIZER)
+    bpy.utils.unregister_class(SUBDIVIDE_EVIL)
+    del bpy.types.Scene.quick_gltf_export_name
+    ## bpy.utils.unregister_class(QUICK_PT_gltf_panel)
+    bpy.utils.unregister_class(QUICK_OT_export_gltf)
+    bpy.utils.unregister_class(PES2020_SCALE)
+    bpy.utils.unregister_class(APPEND_LIGHTS) 
 
 if __name__ == "__main__":
     register()

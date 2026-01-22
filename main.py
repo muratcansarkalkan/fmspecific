@@ -71,6 +71,8 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         row = layout.row()
         row.operator("object.appendlights", text = "Append lights")
         row = layout.row()
+        row.operator("object.covmapscene", text = "Covmap scene")
+        row = layout.row()
         row.operator("mesh.subdivideevil", text = "Subdivide edge (repeat use)")
         
         layout.label(text="Choose Export Target:")

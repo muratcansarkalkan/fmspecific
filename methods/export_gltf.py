@@ -85,6 +85,7 @@ def register():
         items=[
             ("shadow_1.gltf", "shadow_1.gltf", ""),
             ("sky_3.gltf", "sky_3.gltf", ""),
+            ("stadium_0.gltf", "stadium_0.gltf", ""),
             ("stadium_1.gltf", "stadium_1.gltf", ""),
             ("stadium_3.gltf", "stadium_3.gltf", ""),
         ],

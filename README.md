@@ -10,6 +10,7 @@ These scripts are compatible with Blender 3.1.
 
 11/15/2023 - Added Photoshop script for creating shadow images inside `photoshop_scripts` directory.
 11/15/2023 - Added script for adjusting brightness for all of the objects by %25.
+2/15/2026 - Added a lot of scripts in the meantime.
 
 ## Installation
 
@@ -111,18 +112,31 @@ After installing the FIFA Stadium Conversion Scripts add-on, you can access it w
 
    - **Crowd Distribution**
       - Crowd Split: Equally and randomly distributes crowds for both away and home to 4 different materials (0,1,2,3). Before using this feature, view the instructions by hovering over the button. Make sure no object is selected at 3D Viewport and no mesh is selected at enable_crowd object. Press <kbd>Alt</kbd> + <kbd>A</kbd> to deselect everything at Object mode or Edit mode.
-      
+      - Crowd Randomizer: Changes UV map locations of crowd meshes to avoid crowds looking copies of each other in-game.
+	  
    - **PES 2020**
       - Remove Unnecessary Materials: Removes every other material from the blend file unless the texture is a diffuse texture.
+      - Remove empties and scale stadium: Removes empty objects and scales stadium to match FIFA Manager field esizes.
       - Alpha to Opaque: Switches blending type of Selected objects from alpha blend, to opaque.
 
    - **Optional and Advanced Features**
       - adbb Attach: Creates a mesh for adbb texture in the middle of adboards.
       - Add Generic Grass: Adds grass for stadiums which don't have a field object to avoid black areas in 3D match.
       - Bake Transparent Objects: Bakes objects that has transparent textures without texture.
-      - Convert Vertex to Empties (Lights.001): Creates empties from independent vertices.
+      - Convert Vertex to Empties (Lights.001): Creates empties from independent vertices. Used to create LightGlow_... objects.
       - Split Stadium by Textures (PES6): Splits objects by texture rather than material. You need to merge everything into one object before using this method.
       - Clear Vertex Groups: Clears vertex groups that are created after the previous method.
+	  - Remove Vertex Colors (FIFA16): Removes unnecessary vertex colors, leaving Col as the only vertex color for all objects.
+	  - Adjust Brightness: Sets vertex colors of all objects with 25% brightness. This is useful after baking vertex colors.
+	  - Adjust Brightness for Night: Sets vertex colors of selected objects with -60% brightness. Useful for setting darker exteriors for night editions of stadia.
+	  - Create Bake Image: Creates a material for shadow and bake image to be baked for shadows over pitch.
+	  - Load Shadow Image: Loads shad.tga from the working directory instead of bake.png and connects image node to Base Color node of material for shadows.
+	  - Append Lights: Appends Rain and Sun object from lights.blend.
+	  - Covmap Scene: Changes camera and adds a plane to setup for covmap_1 image.
+	  - Subdivide Edge: Experimental, this is useful to split longer edges in a smarter way.
+	  
+   - **Choose Export Target**
+      - This tab allows users to export with certain names.
 
 This tab provides easy access to the various functionalities offered by the FIFA Stadium Conversion Scripts.
 

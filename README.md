@@ -10,7 +10,8 @@ These scripts are compatible with Blender 3.1.
 
 11/15/2023 - Added Photoshop script for creating shadow images inside `photoshop_scripts` directory.
 11/15/2023 - Added script for adjusting brightness for all of the objects by %25.
-2/15/2026 - Added a lot of scripts in the meantime.
+2/15/2026 - Added a lot of scripts in the meantime
+2/28/2026 - Added a separate plugin to select objects solely using Keyboard (object_quick_select.py), see object_quick_select.md for description.
 
 ## Installation
 

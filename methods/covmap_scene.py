@@ -28,6 +28,11 @@ class COVMAP_SCENE(bpy.types.Operator):
             # 15 degrees = 0.261799 radians
             for _ in range(6):
                 bpy.ops.view3d.view_orbit(ctx, angle=0.261799, type='ORBITRIGHT')
+                
+            # 3. Disable 3D Cursor and Origins from overlay display
+            overlay = view3d_area.spaces.active.overlay
+            overlay.show_cursor = False
+            overlay.show_object_origins = False
 
         # 3. Create the Plane
         bpy.ops.mesh.primitive_plane_add(size=2, location=(0, 0, 0))

@@ -90,7 +90,18 @@ def execute_full_workflow(action):
                     rv3d.view_rotation = (0.5, 0.5, 0.5, 0.5) # Right View
                     rv3d.view_perspective = 'ORTHO' # Perspective Mode
                     
-    # --- PHASE 4: ADBB ATTACH ---
+    # --- PHASE 4: PRE-ATTACH ADJUSTMENT & ADBB ---
+    # Ensure we are in Edit Mode for the new object
+    bpy.ops.object.mode_set(mode='EDIT')
+    
+    # Select all geometry within the new object and move 0.01m in X
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.transform.translate(value=(0.01, 0, 0))
+    
+    # Switch back to Object Mode for the operator
+    bpy.ops.object.mode_set(mode='OBJECT')     
+    
+    # --- PHASE 5: ADBB ATTACH ---
     bpy.ops.object.adbbattach()
 
 # UI Operator

@@ -31,3 +31,21 @@ The models and textures are inside the generator directory.
 
 StadMain.big has all textures, while Stadelems.big has model files for all assets (tribunes, roof, flood lights, billboards, exterior assets such as buildings, trees).
 In order to actually edit models we need to be delicate. A model file can be used my many stadiums. This limits our options. However with exterior we are more flexible.
+
+## Contents of .big files
+
+   ![FM Specific Tab](images/generic_4.png)
+
+The contents of StadElems.big are straightforward. There are .o files in each of these directories. To export contents of these .o files, you can use OTools by Dmitri (link at README.md). Once you export .o to a .gltf, it will be directly available to import into Blender. 
+
+   ![FM Specific Tab](images/generic_4.png)
+
+We can't say the same for StadMain.big. You need to export all textures in .fsh files. OTools allows user to export from multiple .fsh files (choosing folder) and export them into sub-directories. To match the textures in Blender for the model you exported, you need to find the correct .fsh file in StadMain.big and match textures.
+
+In the following example, I exported environments/bc_5_0557.o to .gltf. Then imported the .gltf file in Blender, scaled all objects by 0.01 to see the model easier, then rotated all objects by -90 degrees in X axis.
+
+   ![FM Specific Tab](images/generic_5.png)
+
+Then I looked through all textures that are supposed to be available in Blender and tried to find the texture file that has the same list of images. Turns out, for this model, it's rurald.fsh. I exported contents of rurald.fsh with OTools, then back to Blender, chose Find Missing Files and pointed the directory where I exported contents of rurald.fsh. This is a vague explanation, it can be updated in near future if there are people interested.
+
+   ![FM Specific Tab](images/generic_6.png)

@@ -35,7 +35,7 @@ Before using the PES6 to FIFA Manager conversion scripts, you need to set up the
    - Alternatively, you can use the free CS2 version available on the internet.
 
 3. **Latest OTools Version**:
-   - Download the latest version of OTools from [https://bitbucket.org/fifam/otools/downloads/](https://bitbucket.org/fifam/otools/downloads/).
+   - Download the latest version of OTools from [https://github.com/FIFAM-Mods/otools/](https://bitbucket.org/fifam/otools/downloads/).
 
 4. **PES6 to FIFA Manager Converter**:
    - Download the PES6 to FIFA Manager converter from [https://www.mediafire.com/file/wgbvkwnv8khedmb/pes6_to_fifam.7z/file](https://www.mediafire.com/file/wgbvkwnv8khedmb/pes6_to_fifam.7z/file).

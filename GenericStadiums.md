@@ -13,9 +13,11 @@ These stadiums will be referred as custom, while Stadium Editor stadiums will be
 ## Stadium Editor stadiums
 
 All files related to stadiums can be found in data/stadium.
+
    ![FM Specific Tab](images/generic_1.png)
    
 Content inside FIFA has custom stadiums for teams, represented with IDs. For instance, Arsenal’s ID is 000E0001, so in FIFA directory, there is a directory named 000E0001 and game loads the files. Usually the game loads custom stadium but when CPU teams/user team expands their stadium, it allows user to load either custom stadium, or Editor stadium in 3D Options section. The game also allows users to have Editor stadiums for teams. You can export Editor stadiums through Stadium Editor in-game. For example, if you created a replica for Franz-Horr-Stadion of Austria Wien in Stadium Editor and want to use it by default, you can save the file as 00040002 (ID of Austria Wien) in FIFA Manager/data/stadium.
+
    ![FM Specific Tab](images/generic_2.png)
 
 If you want to load custom stadiums, you enable 2 options at the top. If not, Editor stadium will be in effect.
@@ -24,6 +26,7 @@ If you want to load custom stadiums, you enable 2 options at the top. If not, Ed
 
 Stadium Editor stadiums are technically very similar to custom stadiums. They use model and texture files. The difference is, there isn’t a compact model for these stadiums – files such as 000E0001 load a bunch of model pieces and textures to create a complete stadium. That file has location, rotation and scale data for stadium and environment models and information for what textures to be used.
 The models and textures are inside the generator directory.
+
    ![FM Specific Tab](images/generic_3.png)
 
 StadMain.big has all textures, while Stadelems.big has model files for all assets (tribunes, roof, flood lights, billboards, exterior assets such as buildings, trees).

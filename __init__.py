@@ -35,6 +35,10 @@ from .methods.export_gltf import QUICK_PT_gltf_panel
 from .methods.pes2020_scale import PES2020_SCALE
 from .methods.append_lights import APPEND_LIGHTS
 from .methods.covmap_scene import COVMAP_SCENE
+from .methods.crowd_adjust import CROWD_ADJUST
+from .methods.wsp6_adboards import WSP6_ADBOARDS
+from .methods.banners_adjust_pes6 import BANNERS_ADJUST_PES6
+from .methods.adboard_adjust import ADBOARD_ADJUST
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -65,6 +69,10 @@ def register():
     bpy.utils.register_class(PES2020_SCALE)
     bpy.utils.register_class(APPEND_LIGHTS)
     bpy.utils.register_class(COVMAP_SCENE)
+    bpy.utils.register_class(CROWD_ADJUST)
+    bpy.utils.register_class(WSP6_ADBOARDS) 
+    bpy.utils.register_class(BANNERS_ADJUST_PES6) 
+    bpy.utils.register_class(ADBOARD_ADJUST) 
 
     bpy.types.Scene.quick_gltf_export_name = bpy.props.EnumProperty(
         name="GLTF Name",
@@ -109,6 +117,10 @@ def unregister():
     bpy.utils.unregister_class(PES2020_SCALE)
     bpy.utils.unregister_class(APPEND_LIGHTS) 
     bpy.utils.unregister_class(COVMAP_SCENE) 
+    bpy.utils.unregister_class(CROWD_ADJUST) 
+    bpy.utils.unregister_class(WSP6_ADBOARDS) 
+    bpy.utils.unregister_class(BANNERS_ADJUST_PES6) 
+    bpy.utils.unregister_class(ADBOARD_ADJUST) 
 
 if __name__ == "__main__":
     register()

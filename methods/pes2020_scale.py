@@ -47,6 +47,8 @@ class PES2020_SCALE(bpy.types.Operator):
 
         # Apply to each object
         for obj in objs:
+            if obj.hide_get():  # skip if hidden in view layer
+                continue
             # apply rotation
             obj.matrix_world = rot_mat @ obj.matrix_world
 

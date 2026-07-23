@@ -1,4 +1,5 @@
 import bpy
+from .methods import skcd_image
 
 class PANEL_CUSTOM_UI(bpy.types.Panel):
     
@@ -9,83 +10,103 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
     bl_category = "FM Specific"
     
     def draw(self, context):
-        # Variables
         layout = self.layout
         scene = context.scene
-
-        # Create simple rows
-        # Create simple row
-        row = layout.row()
-        row.label(text = "Import GLTF and Scale")
-        row = layout.row(align=True)
-        row.operator("object.initialimport0", text = "stad_0")
-        row.operator("object.initialimport1", text = "stad_1")
-        row.operator("object.initialimport3", text = "stad_3")
-        row = layout.row()
-        row.operator("object.scaleempties", text = "Scale empties")
-        # Create simple row
-        row = layout.row()
-        row.label(text = "Crowd separation")
-        row = layout.row()
-        row.operator("object.crowdadjust", text = "Crowd all in one tool")
-        row = layout.row(align=True)
-        row.operator("object.crowdfifa16", text = "Crowd FIFA16")
-        row.operator("object.crowdpes6", text = "Crowd PES6")
-        row = layout.row()
-        row.label(text = "Crowd distribution")
-        row = layout.row(align=True)
-        row.operator("object.crowdsplit", text = "Split")
-        row.operator("object.crowdrandomizer", text = "Randomizer")
-        row = layout.row()
-        row.label(text = "PES 6")
-        row = layout.row(align=True)
-        row.operator("object.wsp6adboards", text = "Rotate adba")
-        row.operator("object.bannersadjustpes6", text = "Banners")
-        row.operator("object.modifyflags", text = "Flags")
-        # Create simple row
-        row = layout.row()
-        row.label(text = "PES 2020")
-        row = layout.row()
-        row.operator("object.pes2020matremove", text = "Remove unnecessary materials")
-        row = layout.row()
-        row.operator("object.pes2020scale", text = "Remove empties and scale stadium")
-        row = layout.row()
-        row.operator("object.alphatoopaque", text = "Alpha to opaque")
-        # Create simple row
-        row = layout.row()
-        row.label(text = "Others")
-        row = layout.row()
-        row.operator("object.adbbattach", text = "adbb Attach")
-        row = layout.row()
-        row.operator("object.adboardadjust", text = "Modify adboards for adbb")
-        row = layout.row()
-        row.operator("object.genericgrass", text = "Add generic grass")
-        row = layout.row()
-        row.operator("object.baketrans", text = "Bake transparent objects")
-        row = layout.row()
-        row.operator("object.vertextolightglow", text = "Convert vertex to empties, name your object as Lights.001")
-        row = layout.row()
-        row.operator("object.texturesplit", text = "Split stadium by textures (PES6)")
-        row = layout.row()
-        row.operator("object.removevg", text = "Clear vertex groups")
-        row = layout.row()
-        row.operator("object.removevcols", text = "Remove vertex colors (FIFA16)")
-        row = layout.row()
-        row.operator("object.vertexbrightness", text = "Adjust brightness")
-        row = layout.row()
-        row.operator("object.vertexbrightnight", text = "Adjust brightness for night, selected objects")
-        row = layout.row()
-        row.operator("object.createbakeimage", text = "Create bake image")
-        row = layout.row()
-        row.operator("object.getshadow", text = "Load shadow image")
-        row = layout.row()
-        row.operator("object.appendlights", text = "Append lights")
-        row = layout.row()
-        row.operator("object.covmapscene", text = "Covmap scene")
-        row = layout.row()
-        row.operator("mesh.subdivideevil", text = "Subdivide edge (repeat use)")
         
-        layout.label(text="Choose Export Target:")
+        # --- Import & Scale ---
+        layout.label(text="Import GLTF and Scale")
+        row = layout.row(align=True)
+        row.operator("object.initialimport0", text="stad_0")
+        row.operator("object.initialimport1", text="stad_1")
+        row.operator("object.initialimport3", text="stad_3")
+        layout.operator("object.scaleempties", text="Scale empties")
+
+        # --- Crowd ---
+        layout.separator(factor=0.5)
+        layout.label(text="Crowd Separation")
+        layout.operator("object.crowdadjust", text="Crowd all in one tool")
+        row = layout.row(align=True)
+        row.operator("object.crowdfifa16", text="Crowd FIFA16")
+        row.operator("object.crowdpes6", text="Crowd PES6")
+
+        layout.label(text="Crowd Distribution")
+        row = layout.row(align=True)
+        row.operator("object.crowdsplit", text="Split")
+        row.operator("object.crowdrandomizer", text="Randomizer")
+
+        # --- PES 6 ---
+        layout.separator(factor=0.5)
+        layout.label(text="PES 6")
+        row = layout.row(align=True)
+        row.operator("object.wsp6adboards", text="Rotate adba")
+        row.operator("object.bannersadjustpes6", text="Banners")
+        row.operator("object.modifyflags", text="Flags")
+
+        # --- PES 2020 ---
+        layout.separator(factor=0.5)
+        layout.label(text="PES 2020")
+        layout.operator("object.pes2020matremove", text="Remove unnecessary materials")
+        row = layout.row(align=True)
+        row.operator("object.pes2020scale", text="Remove empties & scale")
+        row.operator("object.alphatoopaque", text="Alpha to opaque")
+
+        # --- Seats ---
+        layout.separator(factor=0.5)
+        layout.label(text="Seats")
+        row = layout.row(align=True)
+        row.operator("object.seatprepare", text="UV prepare")
+        row.operator("object.seatscale", text="Scale")
+        row.operator("object.seatsubdivider", text="Subdivide")
+
+        # --- Others ---
+        layout.separator(factor=0.5)
+        layout.label(text="Others")
+        row = layout.row(align=True)
+        row.operator("object.adbbattach", text="adbb Attach")
+        row.operator("object.adboardadjust", text="Modify adboards")
+        row = layout.row(align=True)
+        row.operator("object.genericgrass", text="Generic grass")
+        row.operator("object.baketrans", text="Bake transparent")
+        row = layout.row(align=True)
+        row.operator("object.removevg", text="Clear vertex groups")
+        row.operator("object.removevcols", text="Remove vtx colors")
+        row = layout.row(align=True)
+        row.operator("object.vertexbrightness", text="Brightness")
+        row.operator("object.vertexbrightnight", text="Brightness (night)")
+        row = layout.row(align=True)
+        row.operator("object.createbakeimage", text="Bake image")
+        row.operator("object.getshadow", text="Load shadow")
+        row = layout.row(align=True)
+        row.operator("object.appendlights", text="Append lights")
+        row.operator("object.covmapscene", text="Covmap scene")
+        row = layout.row(align=True)
+        row.operator("object.vertextolightglow", text="Vertex → empties (Lights.001)")
+        row = layout.row(align=True)
+        row.operator("object.texturesplit", text="Split by textures (PES6)")
+        row.operator("mesh.subdivideevil", text="Subdivide edge")
+
+        # --- Display Image & Refresh ---
+        box = layout.box()
+        header_row = box.row(align=True)
+        header_row.label(text="Image Preview:", icon="IMAGE_DATA")
+
+        pcoll = skcd_image.preview_collections.get("main")
+        if pcoll and "my_skcd_image" in pcoll:
+            icon_id = pcoll["my_skcd_image"].icon_id
+
+            img_row = box.row()
+            img_row.scale_y = 0.8
+            img_row.alignment = "CENTER"
+            img_row.template_icon(icon_value=icon_id, scale=10.0)
+        else:
+            row = box.row(align=True)
+            row.label(text="skcd.png not found", icon="ERROR")
+            row.operator("object.refresh_skcd_image", text="", icon="FILE_REFRESH")
+
+        layout.separator(factor=0.5)
+
+        # --- Export ---
+        layout.separator(factor=0.5)
+        layout.label(text="Export Target:")
         layout.prop(scene, "quick_gltf_export_name", text="")
         layout.operator("export_scene.quick_gltf", icon="EXPORT")
-

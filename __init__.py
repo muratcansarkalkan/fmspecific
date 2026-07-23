@@ -40,6 +40,10 @@ from .methods.wsp6_adboards import WSP6_ADBOARDS
 from .methods.banners_adjust_pes6 import BANNERS_ADJUST_PES6
 from .methods.adboard_adjust import ADBOARD_ADJUST
 from .methods.modify_flags import MODIFY_FLAGS
+from .methods.seatscale import SEAT_SCALE
+from .methods.seatprepare import SEAT_PREPARE
+from .methods.seatsubdivider import SEAT_SUBDIVIDER
+from .methods.skcd_image import OBJECT_OT_refresh_skcd_image
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -75,13 +79,18 @@ def register():
     bpy.utils.register_class(BANNERS_ADJUST_PES6) 
     bpy.utils.register_class(ADBOARD_ADJUST) 
     bpy.utils.register_class(MODIFY_FLAGS) 
-
+    bpy.utils.register_class(SEAT_SCALE) 
+    bpy.utils.register_class(SEAT_PREPARE) 
+    bpy.utils.register_class(SEAT_SUBDIVIDER) 
+    bpy.utils.register_class(OBJECT_OT_refresh_skcd_image)
+    
     bpy.types.Scene.quick_gltf_export_name = bpy.props.EnumProperty(
         name="GLTF Name",
         description="Choose a target export filename",
         items=[
             ("shadow_1.gltf", "shadow_1.gltf", ""),
             ("sky_3.gltf", "sky_3.gltf", ""),
+            ("sky_3_fifa16.gltf", "sky_3.gltf (FIFA16)", ""),
             ("stadium_0.gltf", "stadium_0.gltf", ""),
             ("stadium_1.gltf", "stadium_1.gltf", ""),
             ("stadium_3.gltf", "stadium_3.gltf", ""),
@@ -124,6 +133,10 @@ def unregister():
     bpy.utils.unregister_class(BANNERS_ADJUST_PES6) 
     bpy.utils.unregister_class(ADBOARD_ADJUST) 
     bpy.utils.unregister_class(MODIFY_FLAGS) 
-
+    bpy.utils.unregister_class(SEAT_SCALE) 
+    bpy.utils.unregister_class(SEAT_PREPARE) 
+    bpy.utils.unregister_class(SEAT_SUBDIVIDER) 
+    bpy.utils.unregister_class(OBJECT_OT_refresh_skcd_image)
+    
 if __name__ == "__main__":
     register()

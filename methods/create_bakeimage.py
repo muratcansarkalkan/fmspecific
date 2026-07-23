@@ -15,7 +15,6 @@ class CREATE_BAKEIMAGE(bpy.types.Operator):
             
             # Get the material's node tree
             nodes = mat.node_tree.nodes
-            links = mat.node_tree.links
             
             # Remove existing texture nodes if they exist
             for node in nodes:
@@ -37,5 +36,9 @@ class CREATE_BAKEIMAGE(bpy.types.Operator):
         # Apply to selected object
         if bpy.context.object:
             create_material_with_texture(bpy.context.object)
-
+            
+        # Set Cycles bake target to Image Textures (Blender 3.0+)
+        if hasattr(context.scene.render, "bake"):
+            context.scene.render.bake.target = 'IMAGE_TEXTURES'
+            
         return {"FINISHED"}

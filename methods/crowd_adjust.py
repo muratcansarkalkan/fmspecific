@@ -45,6 +45,16 @@ class CROWD_ADJUST(bpy.types.Operator):
         return {'FINISHED'}
 
 
+def get_texture_name(material):
+    """Finds the image texture name assigned to the material, falling back to material name."""
+    if material and material.use_nodes:
+        for node in material.node_tree.nodes:
+            if node.type == 'TEX_IMAGE' and node.image:
+                # Strips file extension if present (e.g., 'rwa0.png' -> 'rwa0')
+                return node.image.name.rsplit('.', 1)[0]
+    return material.name if material else "NoMaterial"
+
+
 def run_crowd_script(scale_factor):
 
     # ─── Step 1: Scale UV maps on X axis only for enable_crowd ───────────────
@@ -90,7 +100,7 @@ def run_crowd_script(scale_factor):
 
     bpy.ops.object.crowdsplit()
 
-    # ─── Step 5: Merge all objects starting with "enable_crowd" ──────────────
+    # ─── Step 5: Merge initial crowd objects into intermediate Enable_crowd ───
 
     bpy.ops.object.select_all(action='DESELECT')
 
@@ -109,9 +119,49 @@ def run_crowd_script(scale_factor):
     bpy.context.view_layer.objects.active = active_obj
 
     bpy.ops.object.join()
+    merged_obj = bpy.context.active_object
+    merged_obj.name = "Enable_crowd"
 
-    bpy.context.active_object.name = "Enable_crowd"
+    # ─── Step 6: Separate by material & sequentially merge in texture order ──
 
-    print(f"Done. Scale factor used: {scale_factor:.4f}. Merged object renamed to 'Enable_crowd'.")
-    
-    return{"FINISHED"}
+    bpy.ops.object.select_all(action='DESELECT')
+    merged_obj.select_set(True)
+    bpy.context.view_layer.objects.active = merged_obj
+
+    # Separate mesh by material slots
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.separate(type='MATERIAL')
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    split_objects = bpy.context.selected_objects
+
+    # Assign texture names to objects
+    for obj in split_objects:
+        active_mat = obj.active_material
+        tex_name = get_texture_name(active_mat)
+        obj.name = f"enable_crowd.{tex_name}"
+
+    # Sort objects by their assigned texture name (rwa0, rwa1, rwa2, etc.)
+    split_objects.sort(key=lambda o: o.name)
+
+    # Sequentially merge each next object into the base object
+    base_obj = split_objects[0]
+
+    for next_obj in split_objects[1:]:
+        bpy.ops.object.select_all(action='DESELECT')
+        
+        # Select base and the object being merged into it
+        base_obj.select_set(True)
+        next_obj.select_set(True)
+        
+        # Set base object as active target
+        bpy.context.view_layer.objects.active = base_obj
+        
+        # Merge next_obj into base_obj
+        bpy.ops.object.join()
+
+    base_obj.name = "Enable_crowd"
+
+    print(f"Done. Scale factor used: {scale_factor:.4f}. Sequentially merged materials into 'Enable_crowd'.")
+
+    return {'FINISHED'}

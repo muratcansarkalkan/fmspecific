@@ -44,6 +44,7 @@ from .methods.seatscale import SEAT_SCALE
 from .methods.seatprepare import SEAT_PREPARE
 from .methods.seatsubdivider import SEAT_SUBDIVIDER
 from .methods.skcd_image import OBJECT_OT_refresh_skcd_image
+from .methods.opaque_to_alpha import OPAQUE_TO_ALPHA
 
 def register():
     bpy.utils.register_class(main.PANEL_CUSTOM_UI)
@@ -83,7 +84,8 @@ def register():
     bpy.utils.register_class(SEAT_PREPARE) 
     bpy.utils.register_class(SEAT_SUBDIVIDER) 
     bpy.utils.register_class(OBJECT_OT_refresh_skcd_image)
-    
+    bpy.utils.register_class(OPAQUE_TO_ALPHA)
+
     bpy.types.Scene.quick_gltf_export_name = bpy.props.EnumProperty(
         name="GLTF Name",
         description="Choose a target export filename",
@@ -137,6 +139,7 @@ def unregister():
     bpy.utils.unregister_class(SEAT_PREPARE) 
     bpy.utils.unregister_class(SEAT_SUBDIVIDER) 
     bpy.utils.unregister_class(OBJECT_OT_refresh_skcd_image)
-    
+    bpy.utils.unregister_class(OPAQUE_TO_ALPHA)
+
 if __name__ == "__main__":
     register()

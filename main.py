@@ -48,7 +48,9 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         layout.operator("object.pes2020matremove", text="Remove unnecessary materials")
         row = layout.row(align=True)
         row.operator("object.pes2020scale", text="Remove empties & scale")
+        row = layout.row(align=True)
         row.operator("object.alphatoopaque", text="Alpha to opaque")
+        row.operator("object.opaquetoalpha", text="Opaque to alpha")
 
         # --- Seats ---
         layout.separator(factor=0.5)
@@ -89,6 +91,7 @@ class PANEL_CUSTOM_UI(bpy.types.Panel):
         box = layout.box()
         header_row = box.row(align=True)
         header_row.label(text="Image Preview:", icon="IMAGE_DATA")
+        header_row.operator("object.refresh_skcd_image", text="", icon="FILE_REFRESH")
 
         pcoll = skcd_image.preview_collections.get("main")
         if pcoll and "my_skcd_image" in pcoll:

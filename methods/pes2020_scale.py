@@ -10,8 +10,9 @@ class PES2020_SCALE(bpy.types.Operator):
 
     def execute(self, context):
         
+        # Remove empties only if they are visible in an active collection
         for obj in list(bpy.data.objects):
-            if obj.type == 'EMPTY':
+            if obj.type == 'EMPTY' and obj.visible_get():
                 bpy.data.objects.remove(obj, do_unlink=True)
         
         # CONFIG
@@ -22,16 +23,14 @@ class PES2020_SCALE(bpy.types.Operator):
         # -----------------------------
 
         # Save original pivot
-        orig_pivot = bpy.context.scene.transform_orientation_slots[0].type
-        orig_pivot_point = bpy.context.scene.tool_settings.transform_pivot_point
+        orig_pivot = context.scene.transform_orientation_slots[0].type
+        orig_pivot_point = context.scene.tool_settings.transform_pivot_point
 
         # Get 3D cursor location
-        cursor_loc = bpy.context.scene.cursor.location.copy()
+        cursor_loc = context.scene.cursor.location.copy()
 
         # Get selected objects, or all if none selected
-        objs = bpy.context.selected_objects
-        if not objs:
-            objs = bpy.data.objects
+        objs = context.selected_objects if context.selected_objects else bpy.data.objects
 
         # Build rotation matrix around cursor
         rot_mat = Matrix.Translation(cursor_loc) @ \
@@ -41,14 +40,15 @@ class PES2020_SCALE(bpy.types.Operator):
         # Build scale matrix around cursor
         scale_mat = Matrix.Translation(cursor_loc) @ \
                     Matrix.Scale(scale_x, 4, Vector((1,0,0))) @ \
-                    Matrix.Scale(scale_yz,  4, Vector((0,1,0))) @ \
+                    Matrix.Scale(scale_yz, 4, Vector((0,1,0))) @ \
                     Matrix.Scale(scale_yz, 4, Vector((0,0,1))) @ \
                     Matrix.Translation(-cursor_loc)
 
-        # Apply to each object
+        # Apply to visible objects in active collections
         for obj in objs:
-            if obj.hide_get():  # skip if hidden in view layer
+            if not obj.visible_get():  # skips if hidden individually or via collection
                 continue
+                
             # apply rotation
             obj.matrix_world = rot_mat @ obj.matrix_world
 
@@ -56,8 +56,7 @@ class PES2020_SCALE(bpy.types.Operator):
             obj.matrix_world = scale_mat @ obj.matrix_world
 
         # Restore pivot
-        bpy.context.scene.tool_settings.transform_pivot_point = orig_pivot_point
-        bpy.context.scene.transform_orientation_slots[0].type = orig_pivot
+        context.scene.tool_settings.transform_pivot_point = orig_pivot_point
+        context.scene.transform_orientation_slots[0].type = orig_pivot
 
         return {"FINISHED"}
-        
